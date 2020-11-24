@@ -2,6 +2,7 @@
 
 // Main modules
 #include "modules/dish.h"
+#include "modules/customers.h"
 
 // Extra modules
 #include "modules/timecov.h"
@@ -73,13 +74,16 @@ int main() {
             hapusMenu();
             break;
         case 3:
-            // add customer
+            puts("");
+            buatPelangganBaru();
             break;
         case 4:
-            // search customer
+            puts("");
+            cariDataPelanggan();
             break;
         case 5:
-            // view warteg
+            puts("");
+            lihatSeluruhDataPelanggan();
             break;
         case 6:
             // order
@@ -88,7 +92,9 @@ int main() {
             // payment
             break;
         case 8:
-            // exit
+            // exit, don't forget to free the data :)
+            freeDishesNode();
+            freeCustomerNode();
             exit_flag = 0;
             break;
         }
@@ -101,6 +107,6 @@ int main() {
     getchar();
     // print splash-screen
     splashScreen();
-    
+
     return 0;
 }
