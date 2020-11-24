@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+// Main modules
+#include "modules/dish.h"
+
+// Extra modules
 #include "modules/timecov.h"
 
 void mainMenu() {
@@ -61,10 +65,12 @@ int main() {
 
         switch (option) {
         case 1:
-            // add dish
+            puts("");
+            tambahMenuBaru();
             break;
         case 2:
-            // remoev dish
+            puts("");
+            hapusMenu();
             break;
         case 3:
             // add customer
@@ -89,6 +95,7 @@ int main() {
 
         option = 0;
     }
+    puts("");
     puts("Please expand your terminal to full screen!");
     puts("Press enter to continue...");
     getchar();
