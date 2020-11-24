@@ -63,6 +63,7 @@ void popDishHead() {
     } else {
         DishNode *headC = dishHead->next;
         dishHead->next = headC->prev = NULL;
+        free(dishHead->dish);
         free(dishHead);
         dishHead = headC;
     }
@@ -75,6 +76,7 @@ void popDishTail() {
     } else {
         DishNode *tailC = dishTail->prev;
         dishTail->prev = tailC->next = NULL;
+        free(dishTail->dish);
         free(dishTail);
         dishTail = tailC;
     }
@@ -82,6 +84,7 @@ void popDishTail() {
 
 void printHeader(int longest_name, int extra_count) {
     int max_length = longest_name + 22 + extra_count;
+    printalot('=', max_length, true);
     printalot(' ', (max_length - 11) / 2);
     printf("Bude's Menu");
     printalot(' ', (max_length - 11) / 2, true);
@@ -90,7 +93,7 @@ void printHeader(int longest_name, int extra_count) {
     printalot(' ', (longest_name - 4) / 2);
     printf("Name");
     printalot(' ', (longest_name - 4) / 2);
-    printf(" Quantity");
+    printf("   Quantity");
     printf("   Price\n");
 }
 
@@ -114,9 +117,11 @@ bool searchAndPerformDelete(char *name) {
     if (!dishHead) {
         return false;
     } else if (strcmp(name, dishHead->dish->name) == 0) {
+        // puts("Removing head...");
         popDishHead();
         return true;
     } else if (strcmp(name, dishTail->dish->name) == 0) {
+        // puts("Removing tail...");
         popDishTail();
         return true;
     } else {
@@ -127,7 +132,7 @@ bool searchAndPerformDelete(char *name) {
         }
 
         // final check to make sure.
-        if (strcmp(name, dishCurr->dish->name) != 0) {
+        if (!dishCurr) {
             return false;
         }
 
@@ -135,6 +140,7 @@ bool searchAndPerformDelete(char *name) {
         dishCurr->next->prev = dishCurr->prev;
 
         dishCurr->prev = dishCurr->next = NULL;
+        free(dishCurr->dish);
         free(dishCurr);
         return true;
     }
@@ -182,13 +188,15 @@ void hapusMenu() {
     }
     puts("");
     bool is_success = false;
-    char *temp_name_hold = (char*)malloc(sizeof(char));
+    char *temp_name_hold;
+    temp_name_hold = (char*)malloc(sizeof(char));
     while (!is_success) {
         printf("Insert dish's name to be deleted: ");
         scanf("%[^\n]", temp_name_hold);
         getchar();
         is_success = searchAndPerformDelete(temp_name_hold);
     }
+    free(temp_name_hold);
     puts("The dish has been removed!");
     puts("Press enter to continue...");
     getchar();
