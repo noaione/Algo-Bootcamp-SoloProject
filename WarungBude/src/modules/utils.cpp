@@ -11,3 +11,11 @@ void printalot(char ch, int amount, bool new_line = false) {
         printf("\n");
     }
 }
+
+unsigned long DJB2(char *str, int MAX_ELEMENT) {
+    unsigned long hash = 5381;
+    int c;
+    while ((c = *str++))
+        hash = ((hash << 5) + hash) + c;
+    return hash % MAX_ELEMENT;
+}
