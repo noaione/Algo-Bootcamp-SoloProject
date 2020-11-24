@@ -10,4 +10,6 @@ typedef struct Dishes {
 void tambahMenuBaru();
 void hapusMenu();
 
+void freeDishesNode();
+
 #endif /* MOD_DISH_H */

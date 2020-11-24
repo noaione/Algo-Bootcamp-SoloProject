@@ -202,3 +202,20 @@ void hapusMenu() {
     getchar();
     return;
 }
+
+void freeDishesNode() {
+	if (!dishHead) { // empty list
+		return;
+	} else {
+		dishCurr = dishHead;
+		free(dishCurr->dish);
+		dishCurr = dishCurr->next;
+		free(dishHead);
+		while (dishCurr) {
+			free(dishCurr->dish);
+			DishNode *nextAddr = dishCurr->next;
+			free(dishCurr);
+			dishCurr = nextAddr;
+		}
+	}
+}
