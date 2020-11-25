@@ -10,6 +10,21 @@ struct DishNode {
     DishNode *next, *prev;
 } *dishHead, *dishTail, *dishCurr;
 
+void addNewMenuData(Dishes *temp_dish) {
+    DishNode *temp_node = (DishNode*)malloc(sizeof(DishNode));
+    temp_node->dish = temp_dish;
+    temp_node->next = temp_node->prev = NULL;
+
+    // pushTail()
+    if (!dishHead) {
+        dishHead = dishTail = temp_node;
+    } else {
+        dishTail->next = temp_node;
+        temp_node->prev = dishTail;
+        dishTail = temp_node;
+    }
+}
+
 void tambahMenuBaru() {
     Dishes *temp_dish = (Dishes*)malloc(sizeof(Dishes));
     temp_dish->name = (char*)malloc(sizeof(char));
@@ -41,19 +56,6 @@ void tambahMenuBaru() {
         scanf("%d", &temp_dish->quantity);
         getchar();
     }
-
-    DishNode *temp_node = (DishNode*)malloc(sizeof(DishNode));
-    temp_node->dish = temp_dish;
-    temp_node->next = temp_node->prev = NULL;
-
-    // pushTail()
-    if (!dishHead) {
-        dishHead = dishTail = temp_node;
-    } else {
-        dishTail->next = temp_node;
-        temp_node->prev = dishTail;
-        dishTail = temp_node;
-    }
 }
 
 void popDishHead() {
@@ -83,7 +85,7 @@ void popDishTail() {
 }
 
 void printHeader(int longest_name, int extra_count) {
-    int max_length = longest_name + 22 + extra_count;
+    int max_length = longest_name + 23 + extra_count;
     printalot('=', max_length, true);
     printalot(' ', (max_length - 11) / 2);
     printf("Bude's Menu");
@@ -103,6 +105,7 @@ void printDish(Dishes *dish, int menu_pos, int longest_menu) {
     int name_diff = longest_menu - name_len;
     printalot(' ', name_diff / 2);
     printf(" %s ", dish->name);
+    printalot(' ', name_diff / 2);
     printf("   %03d    ", dish->quantity);
     if (dish->price >= 10000) {
         printf(" Rp%ld", dish->price);
@@ -200,7 +203,6 @@ void hapusMenu() {
     puts("The dish has been removed!");
     puts("Press enter to continue...");
     getchar();
-    return;
 }
 
 void freeDishesNode() {
