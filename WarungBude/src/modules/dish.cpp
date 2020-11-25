@@ -52,7 +52,7 @@ void tambahMenuBaru() {
         getchar();
     }
     while (temp_dish->quantity < 1 || temp_dish->quantity > 999) {
-        printf("Insert the price of the dish [1..999]: ");
+        printf("Insert the quantity of the dish [1..999]: ");
         scanf("%d", &temp_dish->quantity);
         getchar();
     }
