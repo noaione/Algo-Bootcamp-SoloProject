@@ -19,4 +19,4 @@ beforehand. All the data is stored automatically for later use by the seller. Pl
 Bude make this application so everyone can eat peacefully!
 
 ## Compilation
-`g++ src/modules/utils.cpp src/modules/timecov.cpp src/modules/dish.cpp src/modules/customers.cpp -o WarungBude`
+`g++ src/modules/utils.cpp src/modules/timecov.cpp src/modules/dish.cpp src/modules/customers.cpp src/main.cpp -o WarungBude`
