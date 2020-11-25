@@ -8,9 +8,18 @@ struct CustomerOrder {
     CustomerOrder *next;
 };
 
+struct CustomerNode {
+    char *name;
+    CustomerOrder *order;
+    CustomerNode *next;
+};
+
 void buatPelangganBaru();
 void lihatSeluruhDataPelanggan();
 void cariDataPelanggan();
+
+void buatOrderanBaru();
+void lakukanPembayaran();
 
 void freeCustomerNode();
 
