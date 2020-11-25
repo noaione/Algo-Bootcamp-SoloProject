@@ -125,6 +125,6 @@ void freeCustomerNode() {
             }
         }
     }
-    free(custHead);
-    free(custTail);
+    // free(custHead);
+    // free(custTail);
 }
