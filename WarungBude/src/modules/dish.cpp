@@ -205,6 +205,50 @@ void hapusMenu() {
     getchar();
 }
 
+// helper stuff
+Dishes *searchDishes(char *dish_name) {
+    if (!dishHead) {
+        return NULL;
+    } else if (strcmp(dish_name, dishHead->dish->name) == 0) {
+        return dishHead->dish;
+    } else if (strcmp(dish_name, dishTail->dish->name) == 0) {
+        return dishTail->dish;
+    } else {
+        dishCurr = dishHead;
+        while (dishCurr && strcmp(dish_name, dishCurr->dish->name) != 0) {
+            dishCurr = dishCurr->next;
+        }
+
+        // final check to make sure.
+        if (!dishCurr) {
+            return NULL;
+        }
+        return dishCurr->dish;
+    }
+    return NULL;
+}
+
+void orderDishes(char *dish_name, int order_amount) {
+    if (!dishHead) {
+        return;
+    } else if (strcmp(dish_name, dishHead->dish->name) == 0) {
+        dishHead->dish->quantity -= order_amount;
+    } else if (strcmp(dish_name, dishTail->dish->name) == 0) {
+        dishTail->dish->quantity -= order_amount;
+    } else {
+        dishCurr = dishHead;
+        while (dishCurr && strcmp(dish_name, dishCurr->dish->name) != 0) {
+            dishCurr = dishCurr->next;
+        }
+
+        // final check to make sure.
+        if (!dishCurr) {
+            return;
+        }
+        dishCurr->dish->quantity -= order_amount;
+    }
+}
+
 void freeDishesNode() {
 	if (!dishHead) { // empty list
 		return;
