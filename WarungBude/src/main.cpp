@@ -86,10 +86,12 @@ int main() {
             lihatSeluruhDataPelanggan();
             break;
         case 6:
-            // order
+            puts("");
+            buatOrderanBaru();
             break;
         case 7:
-            // payment
+            puts("");
+            lakukanPembayaran();
             break;
         case 8:
             // exit, don't forget to free the data :)
