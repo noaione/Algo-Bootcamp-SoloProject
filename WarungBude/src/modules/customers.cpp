@@ -221,6 +221,12 @@ void addNewOrderData(char *user_name, int user_id, Dishes *dish_data, int order_
 }
 
 void buatOrderanBaru() {
+    if (!anyAvailableDishes()) {
+        puts("There's no available dishes currently...");
+        puts("Press enter to continue...");
+        getchar();
+        return;
+    }
     if (!anyAddedCustomers()) {
         puts("There's no customers currently...");
         puts("Press enter to continue...");

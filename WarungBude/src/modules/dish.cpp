@@ -247,6 +247,24 @@ void orderDishes(char *dish_name, int order_amount) {
     }
 }
 
+bool anyAvailableDishes() {
+    if (!dishHead) {
+        return false;
+    } else {
+        dishCurr = dishHead;
+        bool anything_with_quantity = false;
+        while (dishCurr) {
+            if (dishCurr->dish->quantity > 0) {
+                anything_with_quantity = true;
+                break;
+            }
+            dishCurr = dishCurr->next;
+        }
+        return anything_with_quantity;
+    }
+    return false;
+}
+
 void freeDishesNode() {
 	if (!dishHead) { // empty list
 		return;

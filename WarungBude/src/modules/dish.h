@@ -17,6 +17,7 @@ struct DishNode {
 void tambahMenuBaru();
 void hapusMenu();
 
+bool anyAvailableDishes();
 Dishes *searchDishes(char *dish_name);
 void orderDishes(char *dish_name, int order_amount);
 
