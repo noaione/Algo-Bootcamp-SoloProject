@@ -5,10 +5,7 @@
 #include "dish.h"
 #include "utils.h"
 
-struct DishNode {
-    Dishes *dish;
-    DishNode *next, *prev;
-} *dishHead, *dishTail, *dishCurr;
+DishNode *dishHead, *dishTail, *dishCurr;
 
 void addNewMenuData(Dishes *temp_dish) {
     DishNode *temp_node = (DishNode*)malloc(sizeof(DishNode));
@@ -56,6 +53,7 @@ void tambahMenuBaru() {
         scanf("%d", &temp_dish->quantity);
         getchar();
     }
+    addNewMenuData(temp_dish);
 }
 
 void popDishHead() {
