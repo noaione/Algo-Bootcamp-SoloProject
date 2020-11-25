@@ -54,6 +54,10 @@ void tambahMenuBaru() {
         getchar();
     }
     addNewMenuData(temp_dish);
+    puts("");
+    puts("The dish has been added!");
+    puts("Press enter to continue...");
+    getchar();
 }
 
 void popDishHead() {
@@ -89,11 +93,12 @@ void printHeader(int longest_name, int extra_count) {
     printf("Bude's Menu");
     printalot(' ', (max_length - 11) / 2, true);
     printalot('=', max_length, true);
-    printf("No. ");
+    printf("No.");
+    printalot(' ', extra_count + 1);
     printalot(' ', (longest_name - 4) / 2);
     printf("Name");
     printalot(' ', (longest_name - 4) / 2);
-    printf("   Quantity");
+    printf("  Quantity");
     printf("   Price\n");
 }
 
