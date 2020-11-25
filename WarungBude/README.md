@@ -1,6 +1,8 @@
 # Warung Bude
 Data Structure and Object Oriented Programming
 
+![Project Status (Done)](https://img.shields.io/badge/project%20status-done-success?style=flat)
+
 ## Cases
 Many food stalls, also called Warteg are growing around us, spread like hectic
 because of basic needs that must be met despite material difficulties or time
@@ -17,4 +19,4 @@ beforehand. All the data is stored automatically for later use by the seller. Pl
 Bude make this application so everyone can eat peacefully!
 
 ## Compilation
-To be written
+`g++ src/modules/utils.cpp src/modules/timecov.cpp src/modules/dish.cpp src/modules/customers.cpp -o WarungBude`
