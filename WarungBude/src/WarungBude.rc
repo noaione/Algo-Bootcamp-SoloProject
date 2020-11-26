@@ -1,0 +1,20 @@
+1 ICON "./WarungBude.ico"
+2 VERSIONINFO
+FILEVERSION    1,0,0,0
+PRODUCTVERSION 1,0,0,0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080904E4"
+        BEGIN
+            VALUE "CompanyName", "N4O"
+            VALUE "FileDescription", "A Data Structure Project"
+            VALUE "FileVersion", "1.0"
+            VALUE "InternalName", "warung_bude"
+            VALUE "LegalCopyright", "N4O"
+            VALUE "OriginalFilename", "WarungBude_Windows.exe"
+            VALUE "ProductName", "Warung Bude"
+            VALUE "ProductVersion", "1.0"
+        END
+    END
+END
