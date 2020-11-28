@@ -12,7 +12,6 @@ int main() {
         getchar();
         addNewPatients((char*)name, dd, (char*)mm, yyyy);
     }
-    puts("removing patient");
     // printExistingPatients();
     int copy_of_cures = cures;
     int cured_patient = 0;
@@ -35,7 +34,6 @@ int main() {
             cured_patient++;
         }
     }
-    puts("checking...");
     if (total > cured_patient) {
         printf("Need %d more cure\n", total - cured_patient);
         printExistingPatients();
