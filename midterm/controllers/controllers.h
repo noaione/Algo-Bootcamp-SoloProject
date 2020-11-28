@@ -90,27 +90,29 @@ PatientNode *createNewPatient(char *name, int dd, char *mm, int yyyy) {
     if (temp->mm == 1) {
         totalSecPassedDays += (temp->dd) * 86400;
     } else {
-        bool isLeap = determineLeapYear(yyyy);
+        bool isLeap = determineLeapYear(temp->yyyy);
         int totalMonthDays = countTotalDaysForMonth(temp->mm);
         if (isLeap) {
             totalMonthDays++;
         }
         int currentMonthDays = determineTotalDays(temp->mm);
-        int diffMonthDaysAndCurrentDay = currentMonthDays - dd;
-        totalMonthDays -= diffMonthDaysAndCurrentDay;
-        totalSecPassedDays = totalMonthDays * 86400;
+        totalMonthDays -= currentMonthDays;
+        totalMonthDays += temp->dd;
+        totalSecPassedDays = (totalMonthDays * 86400);
     }
-    int tempYear = yyyy - 1;
-    if (tempYear >= 0) {
-        for (int i = 0; i < tempYear; i++) {
-            bool leap = determineLeapYear(yyyy);
+    int tempYear = temp->yyyy - 1;
+    long long int totalSecPassedInYears = 0;
+    if (tempYear > 0) {
+        for (int curYear = 1; curYear <= tempYear; curYear++) {
+            bool leap = determineLeapYear(curYear);
             if (leap) {
-                totalSecPassedDays += 366 * 86400;
+                totalSecPassedInYears += 31622400;
             } else {
-                totalSecPassedDays += 365 * 86400;
+                totalSecPassedInYears += 31536000;
             }
         }
     }
+    totalSecPassedDays += totalSecPassedInYears;
     temp->secs = totalSecPassedDays;
     temp->prev = temp->next = NULL;
     return temp;
